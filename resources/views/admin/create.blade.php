@@ -9,14 +9,14 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="mb-4">Register New Student</h1>
+                <h1 class="mb-4">Registration For Admin</h1>
                 <div class="d-flex justify-content-end mb-3">
                     <a href="{{ route('student.showLogin') }}" class="btn btn-outline-secondary">
                         <i class="bi bi-box-arrow-in-right"></i> Log In
                     </a>
                 </div>
 
-                <form action="{{ route('student.store') }}" method="POST" class="card p-4 shadow-sm">
+                <form action="{{ route('admin.store') }}" method="POST" class="card p-4 shadow-sm">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">First Name:</label>
@@ -29,6 +29,10 @@
                     <div class="mb-3">
                         <label class="form-label">Email:</label>
                         <input type="email" name="email" class="form-control" required>
+                    </div>
+                     <div class="mb-3">
+                        <label class="form-label">Employee Number:</label>
+                        <input type="text" name="emp_no" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">New Password:</label>
@@ -50,6 +54,7 @@
                         </ul>
                     </div>
                 @endif
+
             </div>
         </div>
     </div>

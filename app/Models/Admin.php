@@ -4,19 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
-use Illuminate\Contracts\Auth\Authenticatable;
-
-class Student extends Model implements Authenticatable
+class Admin extends Model
 {
-    use HasFactory, AuthenticatableTrait;
-
+    use HasFactory;
     protected $fillable = [
         'first_name',
         'last_name',
         'email',
+        'emp_no',
         'password',
     ];
 }

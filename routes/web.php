@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,30 @@ use App\Http\Controllers\StudentController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+
+Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+Route::post('/admin/create', [AdminController::class, 'store'])->name('admin.store');
+
+//Route::get('/student', [StudentController::class, 'index'])->name('student.index')->middleware('auth');
+//Route::get('/student', [StudentController::class, 'index'])->name('student.index');
 Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
-Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
-Route::get('/student/{id}/edit', [StudentController::class, 'edit'])->name('student.edit');
+//Route::get('/student/login', [StudentController::class, 'showLogin'])->name('student.showLogin');
+Route::get('/student/logout', [StudentController::class, 'logout'])->name('student.logout');
+//Route::post('/student/login', [StudentController::class, 'login'])->name('student.login');
+Route::middleware('guest')->group(function () {
+    Route::get('/student/login', [StudentController::class, 'showLogin'])->name('student.showLogin');
+    Route::post('/student/login', [StudentController::class, 'login'])->name('student.login');
+    Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
+});
+//Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
+//Route::get('/student/{id}/edit', [StudentController::class, 'edit'])->name('student.edit');
 Route::post('/', [StudentController::class, 'store'])->name('student.store');
-Route::put('/student/{id}', [StudentController::class, 'update'])->name('student.update');
+//Route::put('/student/{id}', [StudentController::class, 'update'])->name('student.update');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+    Route::get('/student/{id}', [StudentController::class, 'show'])->name('student.show');
+    Route::get('/student/{id}/edit', [StudentController::class, 'edit'])->name('student.edit');
+    Route::put('/student/{id}', [StudentController::class, 'update'])->name('student.update');
+    
+});

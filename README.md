@@ -64,3 +64,24 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+Resource Allocation System
+
+User Rolls
+..................
+Admin (TO)
+Student
+Insturctors
+Lectures
+
+Class
+..............
+Student- First_Name,Last_HName,Uni_Email,Regstration No,password,Activation Status
+Admin -First_Name,Last_HName,Uni_Email,Emp_No,password,Activation Status
+Resoruces - rs_id,rs_name,rs_type
+TimeSlotAllocation- 
+Instructor
+Lecture
+............
