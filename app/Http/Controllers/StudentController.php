@@ -187,5 +187,10 @@ else{
         //
     }
 
+    public function studentportal()
+    {
+        return view('welcome');
+    }
+
     
 }

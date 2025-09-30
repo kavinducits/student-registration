@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HealthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,15 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+/*
+Route::get('/studentportal', function () {
     return view('welcome');
 });
-
+*/
+Route::get('/studentportal', [StudentController::class, 'studentportal'])->name('student.studentportal');
 Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
 Route::post('/admin/create', [AdminController::class, 'store'])->name('admin.store');
+Route::get('/', [HealthController::class, 'dbHealth'])->name('health.dbHealth');
 
 //Route::get('/student', [StudentController::class, 'index'])->name('student.index')->middleware('auth');
 //Route::get('/student', [StudentController::class, 'index'])->name('student.index');
